@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Book>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            
+        </tr>
+        <tr>
+            <th><a href="/books/create">Ekle</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@book.Id">@book.Title</a>
+                </td>
+                <td>@book.Author</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@book.Id" onclick="return confirm('Silmek istediğinizden emin misiniz?')"> Sil </a> | Güncelle
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
